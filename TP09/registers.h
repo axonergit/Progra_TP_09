@@ -7,8 +7,8 @@
 int bitSet(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit);
 int bitClr(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit);
 int bitGet(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit);
-int maskOn(void * posPuerto, unsigned int tamanoPuerto, char * mascara[]);
-int maskOff(void * posPuerto, unsigned int tamanoPuerto, char * mascara[]);
+int maskOn(void * posPuerto, unsigned int tamanoPuerto, char * mascara);
+int maskOff(void * posPuerto, unsigned int tamanoPuerto, char * mascara);
 
 typedef struct{
     unsigned char b0 :1;

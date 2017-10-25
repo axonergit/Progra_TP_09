@@ -7,7 +7,8 @@
  */
 int main(int argc, char** argv) {
     puerto_8_t puertoA;
-    puertoA.port = 5;
+    puertoA.port = 6;
+    printf("%d",puertoA.port);
     return 0;
 }
 
