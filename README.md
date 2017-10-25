@@ -2,10 +2,10 @@
 
 Grupo 1
 
-Integrantes:\n
-Alexa Maingard\n
-Tomas Gonzalez\n
-Martin Bellefroid\n
-Matias Gonzalez\n
+Integrantes:
+Alexa Maingard;
+Tomas Gonzalez;
+Martin Bellefroid;
+Matias Gonzalez.
 
 Gracias totales!
