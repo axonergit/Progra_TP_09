@@ -4,6 +4,12 @@
 #define REGISTERS_H
 
 
+int bitSet(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit);
+int bitClr(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit);
+int bitGet(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit);
+int maskOn(void * posPuerto, unsigned int tamanoPuerto, char * mascara[]);
+int maskOff(void * posPuerto, unsigned int tamanoPuerto, char * mascara[]);
+
 typedef struct{
     unsigned char b0 :1;
     unsigned char b1 :1;
@@ -50,8 +56,8 @@ typedef struct{
 
 typedef union{
     
-    bitfield_16_t port;
-    unsigned short int;
+    bitfield_16_t bitPort;
+    unsigned short int port;
     puerto_16_Dividido_t puertos;
     
 }puerto_16_t;

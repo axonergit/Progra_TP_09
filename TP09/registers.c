@@ -1,3 +1,4 @@
+#include <registers.h>
 int bitSet(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit){
     
     int error =0;
@@ -41,6 +42,7 @@ int bitClr(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit){
     }
     return error;
 }
+
 int bitGet(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit){
     int error =0;
     int numByte;
@@ -77,7 +79,7 @@ int maskOn(void * posPuerto, unsigned int tamanoPuerto, char * mascara[]){
     return error;
 }
 
-maskOff(void * posPuerto, unsigned int tamanoPuerto, char * mascara[]){
+int maskOff(void * posPuerto, unsigned int tamanoPuerto, char * mascara[]){
     int error;
     char * p;
     //falta chequear el error.
