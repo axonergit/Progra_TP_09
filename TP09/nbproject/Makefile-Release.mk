@@ -36,11 +36,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/display.o \
+	${OBJECTDIR}/elegirPuerto.o \
 	${OBJECTDIR}/led.o \
 	${OBJECTDIR}/logic.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/registers.o \
-	${OBJECTDIR}/termlib.o
+	${OBJECTDIR}/termlib.o \
+	${OBJECTDIR}/testBench.o
 
 
 # C Compiler Flags
@@ -72,6 +74,11 @@ ${OBJECTDIR}/display.o: display.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.c
 
+${OBJECTDIR}/elegirPuerto.o: elegirPuerto.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/elegirPuerto.o elegirPuerto.c
+
 ${OBJECTDIR}/led.o: led.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -101,6 +108,11 @@ ${OBJECTDIR}/termlib.h.gch: termlib.h
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o "$@" termlib.h
+
+${OBJECTDIR}/testBench.o: testBench.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/testBench.o testBench.c
 
 # Subprojects
 .build-subprojects:

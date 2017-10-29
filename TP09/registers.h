@@ -3,7 +3,7 @@
 
 
 #define TAMANOPUERTO_8_T 1
-
+#define TAMANOPUERTO_16_T 2
 
 /*
 ---------------bitSet------------
