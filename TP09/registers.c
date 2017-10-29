@@ -23,6 +23,7 @@ int bitSet(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit){
     return error;
 }
 int bitClr(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit){
+    
     int error =0;
     int numByte;
     char byte ,* p;
@@ -45,6 +46,7 @@ int bitClr(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit){
 }
 
 int bitGet(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit){
+   
     int error =0;
     int numByte;
     char byte ,* p;

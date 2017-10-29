@@ -8,6 +8,17 @@
 #include "logic.h"
 #include "led.h"
 
+#define BYTE_TO_BINARY_PATTERN "%c%c%c%c%c%c%c%c"
+#define BYTE_TO_BINARY(byte)  \
+  (byte & 0x80 ? '1' : '0'), \
+  (byte & 0x40 ? '1' : '0'), \
+  (byte & 0x20 ? '1' : '0'), \
+  (byte & 0x10 ? '1' : '0'), \
+  (byte & 0x08 ? '1' : '0'), \
+  (byte & 0x04 ? '1' : '0'), \
+  (byte & 0x02 ? '1' : '0'), \
+  (byte & 0x01 ? '1' : '0') 
+
 
 int main(void)
 {
@@ -20,13 +31,18 @@ int main(void)
   puerto_8_t puertoA;
   puertoA.port = 0;           //inicializo el puerto, todos los leds apagados
   input=getch(); 
+  bienvenida();
+
 
   while(input != EXIT)
   {
+    //printf("Puerto> %d",BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(puertoA.port));
     if(error)
-      while(!kbhit())
+      while(!kbhit()){
         input=getch();        // Get the Key
-
+        error =0;
+        break;
+      }
 
     if(kbhit())              // wait for a key to be pressed
       input=getch();          // Get the Key
@@ -38,6 +54,7 @@ int main(void)
       {
         case BLINK:
           error = blinkAll_On_Leds(&puertoA.port, TAMANOPUERTO_8_T);
+          
           break;
 
         case OFF:
