@@ -1,4 +1,4 @@
-
+#include "display.h"
 
 void bienvenida(void){
 
@@ -11,4 +11,9 @@ void bienvenida(void){
     printf("Presionando la tecla 'c', los LEDs se apagaran (todos)");
     printf("Presionando la tecla 's', los LEDs se prenderan (todos)");
 
+}
+
+
+void imprimirString(char * string){
+	printf("%s", string);
 }

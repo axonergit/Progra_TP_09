@@ -1,7 +1,9 @@
-
-
 #ifndef REGISTERS_H
 #define REGISTERS_H
+
+
+#define TAMANOPUERTO_8_T 1
+
 
 /*
 ---------------bitSet------------
@@ -73,7 +75,7 @@ int maskOn(void * posPuerto, unsigned int tamanoPuerto, char * mascara);
     1) PosPuerto: puntero a la posicion a la primera posición de nenoria del puerto.
     2) tamanoPuerto: Cantidad de bytes que ocupa en memoria el puerto, Misma cabtidad de bytes que la mascara.
     3) mascara: puntero a char de la nascara utilizada. La mascara tiene que ocupar la misma cantidad de bytes que puerto en memoria.
-    
+
   OUTPUT:
     1) Un 0 en caso de que no haya error,
     2) Un 1 en caso de error,
@@ -131,5 +133,7 @@ typedef union{
     puerto_16_Dividido_t puertos;
 
 }puerto_16_t;
+
+
 
 #endif /* REGISTERS_H */
