@@ -10,14 +10,18 @@ int elegirPuerto(void){
         imprimirString("de 8-bits o 16-bits.");
         imprimirString("Por favor elija el puerto deseado presionando un '1' para 8-bits");
         imprimirString("o un '2' para 16-bits:\n");
-        if(kbhit())
-            opcionElegida = getch();
-        if((opcionElegida != 1) || (opcionElegida != 2)){
+        while(!kbhit()){
+            opcionElegida = getch();       //pido si o si un input, por eso uso getchar, para esperar al enter.
+            break;
+        }
+        
+        if((opcionElegida != '1') && (opcionElegida != '2')){
             flagError = 1;
-            imprimirString("No se ha ingresado un valor correcto");         
+            imprimirString("No se ha ingresado un valor correcto.");   
+            imprimirString("Vuelva a ingresar un valor, pero esta vez correcto."); 
         }
         flagError = 0;
     }
     while(flagError);
-    return opcionElegida;
+    return (opcionElegida-'0');
 }

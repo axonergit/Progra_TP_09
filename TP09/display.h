@@ -5,5 +5,6 @@
 
 void bienvenida(void);
 void imprimirString(char * string);
+void byte_to_2(char * byte);
 
 #endif

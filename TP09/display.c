@@ -18,3 +18,15 @@ void bienvenida(void){
 void imprimirString(char * string){
     printf("%s\n", string);
 }
+
+
+void byte_to_2(char * byte){  
+  printf("%d",((*byte) & 0x80 ? '1' : '0'));
+  printf("%d",((*byte) & 0x40 ? '1' : '0'));
+  printf("%d",((*byte) & 0x20 ? '1' : '0'));
+  printf("%d",((*byte) & 0x10 ? '1' : '0'));
+  printf("%d",((*byte) & 0x08 ? '1' : '0'));
+  printf("%d",((*byte) & 0x04 ? '1' : '0'));
+  printf("%d",((*byte) & 0x02 ? '1' : '0'));
+  printf("%d",((*byte) & 0x01 ? '1' : '0'));
+}

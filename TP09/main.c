@@ -36,10 +36,10 @@ int main(void)
     unsigned char input;
     puerto_8_t puertoA;
     puertoA.port = 0;           //inicializo el puerto, todos los leds apagados
-    input=getch(); 
+
     bienvenida();
 
-
+    input=getch(); 
     while(input != EXIT)
     {
       //printf("Puerto> %d",BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(puertoA.port));
