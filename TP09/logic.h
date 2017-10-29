@@ -1,8 +1,8 @@
-#ifndef DEFF_H
-#define DEFF_H
+#ifndef LOGIC_H
+#define LOGIC_H
 
 #include <stdio.h>
 
-int is_Between_0_And_7 (unsigned char input)
+int is_Between_0_And_7 (unsigned char input);
 
 #endif

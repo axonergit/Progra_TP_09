@@ -1,9 +1,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "registers.h"
 #include "display.h"
 #include "termlib.h"
+#include "registers.h"
+#include "deff.h"
+#include "logic.h"
+#include "led.h"
+
 
 int main(void)
 {
@@ -15,6 +19,7 @@ int main(void)
   unsigned char input;
   puerto_8_t puertoA;
   puertoA.port = 0;           //inicializo el puerto, todos los leds apagados
+  input=getch(); 
 
   while(input != EXIT)
   {
@@ -23,14 +28,12 @@ int main(void)
         input=getch();        // Get the Key
 
 
-    if(kbhit());              // wait for a key to be pressed
+    if(kbhit())              // wait for a key to be pressed
       input=getch();          // Get the Key
 
-    if (is_Between_0_And_7 (input))
-    {
+    if (is_Between_0_And_7(input))
       error = prenderLed(&puertoA.port, TAMANOPUERTO_8_T, input-'0');
-    }
-    else
+    else{
       switch (input)
       {
         case BLINK:
@@ -48,11 +51,13 @@ int main(void)
         case EXIT:
           break;
 
-        case default:
-          imprimir("Hubo un error");
-          error = 1;
+        default:
+            imprimirString("Hubo un error");
+            error = 1;
       }
     }
+  }
 
+  return 0;
 
 }

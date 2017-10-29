@@ -1,3 +1,6 @@
+#include "led.h"
+#include "registers.h"
+
 int prenderLed(void * posPuerto, unsigned int tamanoPuerto, unsigned int numLed){
     return bitSet(posPuerto, tamanoPuerto , numLed);    //pongo un bit prendido en el puerto en donde corresponde
 }
@@ -7,7 +10,7 @@ int blinkAll_On_Leds(void * posPuerto, unsigned int tamanoPuerto){
     int error;
     int i =0;
     for(i =0; i < tamanoPuerto;i++)
-        *(posMascara+i) =  *(posPuerto+i);              //copio el puerto entero como mascara
+        *(posMascara+i) =  *((char *)posPuerto+i);              //copio el puerto entero como mascara
     
     error = apagarLeds(posPuerto, tamanoPuerto);        //apago todos los leds.
     

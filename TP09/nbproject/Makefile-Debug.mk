@@ -35,10 +35,11 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/display.o \
 	${OBJECTDIR}/led.o \
+	${OBJECTDIR}/logic.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/registers.o \
-	${OBJECTDIR}/termlib.o \
 	${OBJECTDIR}/termlib.o
 
 
@@ -66,10 +67,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tp09: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tp09 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/display.o: display.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.c
+
 ${OBJECTDIR}/led.o: led.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/led.o led.c
+
+${OBJECTDIR}/logic.o: logic.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/logic.o logic.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
@@ -86,10 +97,10 @@ ${OBJECTDIR}/termlib.o: termlib.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/termlib.o termlib.c
 
-${OBJECTDIR}/termlib.o: termlib.h
+${OBJECTDIR}/termlib.h.gch: termlib.h
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/termlib.o termlib.h
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o "$@" termlib.h
 
 # Subprojects
 .build-subprojects:

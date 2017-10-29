@@ -15,5 +15,5 @@ void bienvenida(void){
 
 
 void imprimirString(char * string){
-	printf("%s", string);
+    printf("%s", string);
 }

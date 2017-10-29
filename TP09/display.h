@@ -1,5 +1,5 @@
-#ifndef DEFF_H
-#define DEFF_H
+#ifndef DISPLAY_H
+#define DISPLAY_H
 
 #include <stdio.h>
 
