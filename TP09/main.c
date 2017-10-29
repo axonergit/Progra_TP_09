@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "registers.h"
 #include "display.h"
+#include "termlib.h"
 
 int main(void)
 {
@@ -52,10 +53,6 @@ int main(void)
           error = 1;
       }
     }
-
-
-
-
 
 
 }

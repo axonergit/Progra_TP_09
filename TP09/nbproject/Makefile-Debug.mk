@@ -37,7 +37,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/led.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/registers.o
+	${OBJECTDIR}/registers.o \
+	${OBJECTDIR}/termlib.o \
+	${OBJECTDIR}/termlib.o
 
 
 # C Compiler Flags
@@ -78,6 +80,16 @@ ${OBJECTDIR}/registers.o: registers.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/registers.o registers.c
+
+${OBJECTDIR}/termlib.o: termlib.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/termlib.o termlib.c
+
+${OBJECTDIR}/termlib.o: termlib.h
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/termlib.o termlib.h
 
 # Subprojects
 .build-subprojects:

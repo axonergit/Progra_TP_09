@@ -8,7 +8,6 @@ int bitSet(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit){
     char byte ,* p;
     
     if((tamanoPuerto * 8) < numBit ){
-        printf("error.");
         error = 1;
     }
     else{
