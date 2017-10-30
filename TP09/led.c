@@ -9,7 +9,6 @@ int prenderLed(void * posPuerto, unsigned int tamanoPuerto, unsigned int numLed)
 int blinkAll_On_Leds(void * posPuerto, unsigned int tamanoPuerto ,char array[]){
 
     //Creo mis variables
-    char * puerto = (char *) posPuerto;
     int error;
     int i =0;
     for(i =0; i < tamanoPuerto;i++){
@@ -21,7 +20,7 @@ int blinkAll_On_Leds(void * posPuerto, unsigned int tamanoPuerto ,char array[]){
         byte_to_2(0);
     }
     imprimirString("");
-    sleep(1);                                           //Dejo pasar un segundo
+    sleep(0.5);                                           //Dejo pasar un segundo
     if(!error)
         error = maskOn(posPuerto, tamanoPuerto, array);    //Vuelvo a prenderlos con lo mismo que tenian antes
 

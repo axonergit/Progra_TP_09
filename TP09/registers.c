@@ -70,7 +70,7 @@ int bitGet(void * posPuerto, unsigned int tamanoPuerto , unsigned int numBit){
 
 }
 int maskOn(void * posPuerto, unsigned int tamanoPuerto, char * mascara){
-    int error;
+    int error =0;
     char * p;
     p = (char *) posPuerto;         //Posiciono mi puntero en el primer bit del puerto
     int i;
@@ -81,9 +81,8 @@ int maskOn(void * posPuerto, unsigned int tamanoPuerto, char * mascara){
 }
 
 int maskOff(void * posPuerto, unsigned int tamanoPuerto, char * mascara){
-    int error;
+    int error =0;
     char * p;
-    //falta chequear el error.
     p = (char *) posPuerto;
     int i;
     for(i = 0; i <tamanoPuerto ;i++){         //Aplico una mascara al puerto y niego todos aquellos bits que estén prendidos en la

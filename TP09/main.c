@@ -8,7 +8,7 @@
 #include "logic.h"
 #include "led.h"
 #include "elegirPuerto.h"
-
+#include <unistd.h>
 
 
 int main(void)
@@ -20,7 +20,7 @@ int main(void)
   char aux1 = -1 ;
   char aux2 = 0;
   unsigned int flagRecibi = 0;
-  
+  unsigned int sleepTime;
   unsigned int puerto_A_Elegir = 0;
   unsigned int portSize=0;
   puerto_8_t puertoA;
@@ -67,7 +67,7 @@ int main(void)
         byte_to_2(puertoD.puertos.puertoB.port);
     }
     printf("\n");
-    sleep(0.01);            //retardo entre estados.
+    sleepTime = sleep(0.5);            //retardo entre estados.
     
     if(error)               //si hubo error se solicita input obligatorio, bloqueante.
       while(!kbhit()){
