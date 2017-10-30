@@ -4,9 +4,10 @@
 void bienvenida(void){
 
     imprimirString("\nBienvenido a la simulacion de puertos.");
-    imprimirString("Se disponen de 8 LEDs conectados al Puerto A.");
-    imprimirString("Se debera ingresar el numero correspondiente al LED");
-    imprimirString("que se desee prender o apagar (del 0 al 7).");
+    imprimirString("Luego, se debera ingresar durante ejecucion el numero correspondiente al LED ");
+    imprimirString("que se desee prender o apagar (del 0 al 15 en caso de haber elegido el puerto de 16 bits,");
+    imprimirString("del 0 al 7 en caso de haber elegido el puerto de 8 bits)");
+    imprimirString("Luego se presionara enter para prender al LED inidicado.");
     imprimirString("Para poder realizar acciones con los LEDs se dispone de las opciones:");
     imprimirString("Presionando la tecla 'b', los LEDs que se encuentren prendidos parpadearan");
     imprimirString("Presionando la tecla 'c', los LEDs se apagaran (todos)");
@@ -20,7 +21,7 @@ void imprimirString(char * string){
 }
 
 
-void byte_to_2(char  byte){  
+void byte_to_2(char  byte){
   printf("%c",(byte & 0x80) ? '1' : '0');
   printf("%c",(byte & 0x40) ? '1' : '0');
   printf("%c",(byte & 0x20) ? '1' : '0');

@@ -66,7 +66,7 @@ int main(void)
         byte_to_2(puertoD.puertos.puertoB.port);
     }
     printf("\n");
-    sleep(0.5);            //retardo entre estados.
+    sleep(1);            //retardo entre estados.
 
     if(error)               //si hubo error se solicita input obligatorio, bloqueante.
       while(!kbhit()){
