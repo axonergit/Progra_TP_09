@@ -4,34 +4,33 @@
 #include "display.h"
 
 int prenderLed(void * posPuerto, unsigned int tamanoPuerto, unsigned int numLed){
-    return bitSet(posPuerto, tamanoPuerto , numLed);    //pongo un bit prendido en el puerto en donde corresponde
+    return bitSet(posPuerto, tamanoPuerto , numLed);    //Pongo un bit prendido en el puerto en donde corresponde
 }
 int blinkAll_On_Leds(void * posPuerto, unsigned int tamanoPuerto ,char array[]){
-    
-    
-    char * puerto = (char *) posPuerto;                 
+
+    //Creo mis variables
+    char * puerto = (char *) posPuerto;
     int error;
     int i =0;
     for(i =0; i < tamanoPuerto;i++){
-        array[i] =  *((char *)posPuerto+i);              //copio el puerto entero como mascara
+        array[i] =  *((char *)posPuerto+i);              //Copio el puerto entero como mascara
     }
-    error = apagarLeds(posPuerto, tamanoPuerto);        //apago todos los leds.
-    
+    error = apagarLeds(posPuerto, tamanoPuerto);        //Apago todos los leds
+
     for(i =0; i < (tamanoPuerto);i++){
         byte_to_2(0);
     }
     imprimirString("");
-    sleep(1);                                           //dejo pasar un segundo.
+    sleep(1);                                           //Dejo pasar un segundo
     if(!error)
-        error = maskOn(posPuerto, tamanoPuerto, array);    //vuelvo a prenderlos con lo mismo que tenian antes.
-    
-    
+        error = maskOn(posPuerto, tamanoPuerto, array);    //Vuelvo a prenderlos con lo mismo que tenian antes
+
     return error;
 }
 int apagarLeds(void * posPuerto, unsigned int tamanoPuerto){
     int led,error;
-    
-    for(led=0 ;led < (tamanoPuerto*8); led++){            //recorro cada uno de los leds y los voy apagando
+
+    for(led=0 ;led < (tamanoPuerto*8); led++){            //Recorro cada uno de los leds y los voy apagando
         error = bitClr(posPuerto, tamanoPuerto , led);
         if(error)
             break;
@@ -41,8 +40,8 @@ int apagarLeds(void * posPuerto, unsigned int tamanoPuerto){
 }
 int PrenderLeds(void * posPuerto, unsigned int tamanoPuerto){
     int led,error;
-    
-    for(led=0 ;led < (tamanoPuerto*8); led++){            //recorro cada uno de los leds y los voy prendiendo
+
+    for(led=0 ;led < (tamanoPuerto*8); led++){            //Recorro cada uno de los leds y los voy prendiendo
         error = bitSet(posPuerto, tamanoPuerto , led);
         if(error)
             break;
