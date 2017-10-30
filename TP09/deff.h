@@ -1,7 +1,7 @@
 #ifndef DEFF_H
 #define DEFF_H
 
-#define EXIT 27
+#define EXIT 27         //Valor ascii del Escape
 
 #define BLINK 'b'
 #define OFF 'c'

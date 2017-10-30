@@ -1,10 +1,10 @@
 int is_Between_0_And_7 (unsigned char input){
 
-	int flagError;
-	if( (input >= '0') && (input <= '7') )
-		flagError = 1;
+	int flagNotError;
+	if( (input >= '0') && (input <= '7') )				//Chequeo si se ha ingresado un numero entre 0 y 7
+		flagNotError = 1;								//Dee ser asi prendo mi flag de no error
 	else
-		flagError = 0;
+		flagNotError = 0;							//Sino hubo error
 
-	return flagError;
+	return flagNotError;					//Devuelvo si hay error
 }
