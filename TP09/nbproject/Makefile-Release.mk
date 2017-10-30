@@ -41,8 +41,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/logic.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/registers.o \
-	${OBJECTDIR}/termlib.o \
-	${OBJECTDIR}/testBench.o
+	${OBJECTDIR}/termlib.o
 
 
 # C Compiler Flags
@@ -108,11 +107,6 @@ ${OBJECTDIR}/termlib.h.gch: termlib.h
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o "$@" termlib.h
-
-${OBJECTDIR}/testBench.o: testBench.c
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/testBench.o testBench.c
 
 # Subprojects
 .build-subprojects:

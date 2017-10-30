@@ -10,6 +10,7 @@
       <itemPath>led.h</itemPath>
       <itemPath>logic.h</itemPath>
       <itemPath>registers.h</itemPath>
+      <itemPath>termlib.h</itemPath>
       <itemPath>testBench.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -26,7 +27,6 @@
       <itemPath>main.c</itemPath>
       <itemPath>registers.c</itemPath>
       <itemPath>termlib.c</itemPath>
-      <itemPath>testBench.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -51,7 +51,6 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
     <itemPath>Makefile</itemPath>
-    <itemPath>termlib.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -92,8 +91,6 @@
       <item path="termlib.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="termlib.h" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="testBench.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="testBench.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -147,8 +144,6 @@
       <item path="termlib.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="termlib.h" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="testBench.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="testBench.h" ex="false" tool="3" flavor2="0">
       </item>

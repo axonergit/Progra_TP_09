@@ -5,11 +5,12 @@
 int elegirPuerto(void){
     unsigned int opcionElegida = 0;
     unsigned int flagError = 0;
+    imprimirString("La siguiente simulacion puede realizarse en un puerto");
+    imprimirString("de 8-bits o 16-bits.");
+    imprimirString("Por favor elija el puerto deseado presionando un '1' para 8-bits");
+    imprimirString("o un '2' para 16-bits:\n");
+   
     do{
-        imprimirString("La siguiente simulacion puede realizarse en un puerto");
-        imprimirString("de 8-bits o 16-bits.");
-        imprimirString("Por favor elija el puerto deseado presionando un '1' para 8-bits");
-        imprimirString("o un '2' para 16-bits:\n");
         while(!kbhit()){
             opcionElegida = getch();       //pido si o si un input, por eso uso getchar, para esperar al enter.
             break;
@@ -20,7 +21,8 @@ int elegirPuerto(void){
             imprimirString("No se ha ingresado un valor correcto.");   
             imprimirString("Vuelva a ingresar un valor, pero esta vez correcto."); 
         }
-        flagError = 0;
+        else 
+            flagError = 0;
     }
     while(flagError);
     return (opcionElegida-'0');
