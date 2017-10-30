@@ -1,6 +1,7 @@
 #include "led.h"
 #include "registers.h"
 #include <unistd.h>
+#include "display.h"
 
 int prenderLed(void * posPuerto, unsigned int tamanoPuerto, unsigned int numLed){
     return bitSet(posPuerto, tamanoPuerto , numLed);    //pongo un bit prendido en el puerto en donde corresponde
@@ -15,7 +16,11 @@ int blinkAll_On_Leds(void * posPuerto, unsigned int tamanoPuerto ,char array[]){
         array[i] =  *((char *)posPuerto+i);              //copio el puerto entero como mascara
     }
     error = apagarLeds(posPuerto, tamanoPuerto);        //apago todos los leds.
- 
+    
+    for(i =0; i < (tamanoPuerto);i++){
+        byte_to_2(0);
+    }
+    imprimirString("");
     sleep(1);                                           //dejo pasar un segundo.
     if(!error)
         error = maskOn(posPuerto, tamanoPuerto, array);    //vuelvo a prenderlos con lo mismo que tenian antes.
