@@ -44,7 +44,17 @@ int main(void)
     input=getch(); 
     while(input != EXIT)
     {
-      //printf("Puerto> %d",BYTE_TO_BINARY_PATTERN, BYTE_TO_BINARY(puertoA.port));
+      printf("%c",'0'+puertoA.bitPort.b7);
+      printf("%c",'0'+puertoA.bitPort.b6);
+      printf("%c",'0'+puertoA.bitPort.b5);
+      printf("%c",'0'+puertoA.bitPort.b4);
+      printf("%c",'0'+puertoA.bitPort.b3);
+      printf("%c",'0'+puertoA.bitPort.b2);
+      printf("%c",'0'+puertoA.bitPort.b1);
+      printf("%c",'0'+puertoA.bitPort.b0);
+      printf("\n");
+      sleep(0.1);
+    
       if(error)
         while(!kbhit()){
           input=getch();        // Get the Key
