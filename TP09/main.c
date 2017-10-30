@@ -32,11 +32,13 @@ int main(void)
       testBench();
   
   else{
-    int error = 0;
+    int error = 0 ;
     unsigned char input;
     puerto_8_t puertoA;
     puertoA.port = 0;           //inicializo el puerto, todos los leds apagados
 
+    char array [TAMANOPUERTO_8_T];
+    
     bienvenida();
 
     input=getch(); 
@@ -59,7 +61,7 @@ int main(void)
         switch (input)
         {
           case BLINK:
-            error = blinkAll_On_Leds(&puertoA.port, TAMANOPUERTO_8_T);
+            error = blinkAll_On_Leds(&puertoA.port, TAMANOPUERTO_8_T, array);
 
             break;
 

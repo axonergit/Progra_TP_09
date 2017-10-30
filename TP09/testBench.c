@@ -25,12 +25,13 @@ int testBench(void)
   puerto_16_t puertoD;
   puertoD.port = 0;           //inicializo el puerto, todos los leds apagados
   
+  char array [TAMANOPUERTO_16_T]; 
   bienvenida();
   
   aux1 = getch();          // Get the Key
   
       if (!is_Between_0_And_7(aux1))
-          input = aux1-'0';
+          input = aux1;
     
     
       else{
@@ -61,17 +62,13 @@ int testBench(void)
     printf("%c",'0'+puertoD.bitPort.b1);
     printf("%c",'0'+puertoD.bitPort.b0);
     printf("\n");
-    sleep(0.1);
+    sleep(0.01);
     
     if(error)
       while(!kbhit()){
         aux1 = getch();
-        if (!is_Between_0_And_7(aux1)){
-          if(aux1 == EXIT || aux1 == '\n')
+        if (!is_Between_0_And_7(aux1))
             input = aux1;
-          else 
-              input = aux1-'0';
-        }
     
         else{
             aux2 = (aux2*10) + aux1-'0';
@@ -84,12 +81,8 @@ int testBench(void)
 
     if(kbhit()){              // wait for a key to be pressed
       aux1 = getch();          // Get the Key
-      if (!is_Between_0_And_7(aux1)){
-        if(aux1 == EXIT || aux1 == '\n')
+      if (!is_Between_0_And_7(aux1))
             input = aux1;
-        else 
-            input = aux1-'0';
-        }
     
     
     
@@ -104,7 +97,7 @@ int testBench(void)
       switch (input)
       {
         case BLINK:
-          error = blinkAll_On_Leds(&puertoD.port, TAMANOPUERTO_16_T);
+          error = blinkAll_On_Leds(&puertoD.port, TAMANOPUERTO_16_T, array);
           break;
 
         case OFF:
@@ -116,10 +109,12 @@ int testBench(void)
           break;
 
         case '\n':
+          if(flagRecibi){
           input = aux2;
           error = prenderLed(&puertoD.port, TAMANOPUERTO_16_T, input);
           flagRecibi = 0;
-          
+          }
+          aux2 = 0;
           break;
         
         case EXIT:
