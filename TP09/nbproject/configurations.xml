@@ -6,12 +6,10 @@
                    projectFiles="true">
       <itemPath>deff.h</itemPath>
       <itemPath>display.h</itemPath>
-      <itemPath>elegirPuerto.h</itemPath>
       <itemPath>led.h</itemPath>
       <itemPath>logic.h</itemPath>
       <itemPath>registers.h</itemPath>
       <itemPath>termlib.h</itemPath>
-      <itemPath>testBench.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -21,9 +19,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>display.c</itemPath>
-      <itemPath>elegirPuerto.c</itemPath>
       <itemPath>led.c</itemPath>
-      <itemPath>logic.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>registers.c</itemPath>
       <itemPath>termlib.c</itemPath>
@@ -61,6 +57,12 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>`pkg-config --libs allegro-5.0`</linkerOptionItem>
+            <linkerOptionItem>`pkg-config --libs allegro_font-5.0`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
       <item path="Makefile" ex="false" tool="3" flavor2="0">
       </item>
@@ -70,15 +72,9 @@
       </item>
       <item path="display.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="elegirPuerto.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="elegirPuerto.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="led.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="led.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="logic.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="logic.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -91,8 +87,6 @@
       <item path="termlib.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="termlib.h" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="testBench.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -123,15 +117,9 @@
       </item>
       <item path="display.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="elegirPuerto.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="elegirPuerto.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="led.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="led.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="logic.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="logic.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -144,8 +132,6 @@
       <item path="termlib.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="termlib.h" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="testBench.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

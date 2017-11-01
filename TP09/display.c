@@ -1,9 +1,13 @@
 #include "display.h"
 #include <stdio.h>
 
+
+
+
 void bienvenida(void){
 
-    imprimirString("\nBienvenido a la simulacion de puertos.");
+
+    imprimirString("Bienvenido a la simulacion de puertos.");
     imprimirString("Luego, se debera ingresar durante ejecucion el numero correspondiente al LED ");
     imprimirString("que se desee prender o apagar (del 0 al 15 en caso de haber elegido el puerto de 16 bits,");
     imprimirString("del 0 al 7 en caso de haber elegido el puerto de 8 bits)");
@@ -12,7 +16,6 @@ void bienvenida(void){
     imprimirString("Presionando la tecla 'b', los LEDs que se encuentren prendidos parpadearan");
     imprimirString("Presionando la tecla 'c', los LEDs se apagaran (todos)");
     imprimirString("Presionando la tecla 's', los LEDs se prenderan (todos)\n");
-
 }
 
 
