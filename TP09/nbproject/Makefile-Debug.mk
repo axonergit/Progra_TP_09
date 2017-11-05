@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/display.o \
 	${OBJECTDIR}/led.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/newfile.o \
 	${OBJECTDIR}/registers.o \
 	${OBJECTDIR}/termlib.o
 
@@ -56,7 +57,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=`pkg-config --libs allegro-5.0` `pkg-config --libs allegro_font-5.0`  
+LDLIBSOPTIONS=`pkg-config --libs allegro-5.0` `pkg-config --libs allegro_font-5.0` `pkg-config --libs allegro_ttf-5.0`  
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -69,32 +70,37 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tp09: ${OBJECTFILES}
 ${OBJECTDIR}/display.o: display.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.c
+	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0` `pkg-config --cflags allegro_ttf-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.c
 
 ${OBJECTDIR}/led.o: led.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/led.o led.c
+	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0` `pkg-config --cflags allegro_ttf-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/led.o led.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0` `pkg-config --cflags allegro_ttf-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/newfile.o: newfile.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0` `pkg-config --cflags allegro_ttf-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/newfile.o newfile.c
 
 ${OBJECTDIR}/registers.o: registers.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/registers.o registers.c
+	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0` `pkg-config --cflags allegro_ttf-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/registers.o registers.c
 
 ${OBJECTDIR}/termlib.o: termlib.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/termlib.o termlib.c
+	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0` `pkg-config --cflags allegro_ttf-5.0`   -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/termlib.o termlib.c
 
 ${OBJECTDIR}/termlib.h.gch: termlib.h
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0`   -MMD -MP -MF "$@.d" -o "$@" termlib.h
+	$(COMPILE.c) -g `pkg-config --cflags allegro-5.0` `pkg-config --cflags allegro_font-5.0` `pkg-config --cflags allegro_ttf-5.0`   -MMD -MP -MF "$@.d" -o "$@" termlib.h
 
 # Subprojects
 .build-subprojects:

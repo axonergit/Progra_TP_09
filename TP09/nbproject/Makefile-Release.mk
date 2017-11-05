@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/display.o \
 	${OBJECTDIR}/led.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/newfile.o \
 	${OBJECTDIR}/registers.o \
 	${OBJECTDIR}/termlib.o
 
@@ -80,6 +81,11 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/newfile.o: newfile.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/newfile.o newfile.c
 
 ${OBJECTDIR}/registers.o: registers.c
 	${MKDIR} -p ${OBJECTDIR}

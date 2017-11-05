@@ -22,6 +22,7 @@ int main(void)
   
   changemode(BUFFERED_OFF); // Turns terminal line buffering off
   clrscr();
+  
   int error = 0, primeraVuelta =1;
   unsigned char input = 0;
   char aux1 = -1 ;
@@ -35,6 +36,38 @@ int main(void)
   puertoD.port = 0;           //inicializo el puerto, todos los leds apagados
   puertoA.port = 0;           //inicializo el puerto, todos los leds apagados
 
+  
+  ALLEGRO_DISPLAY * display = NULL;     //pointer to display.
+  ALLEGRO_FONT * font = NULL;           //pointer to font.
+  
+  if(!al_init()) { //Primera funcion a llamar antes de empezar a usar allegro.
+    fprintf(stderr, "failed to initialize allegro!\n");
+    return -1;
+  }
+  
+  al_init_font_addon(); // initialize the font addon
+  al_init_ttf_addon();// initialize the ttf (True Type Font) addon
+  
+  display = al_create_display(D_WIDTH, D_HEIGHT); // Intenta crear display de 640x480 de fallar devuelve NULL
+  
+  if(!display) {
+    fprintf(stderr, "failed to create display!\n");
+    return -1;
+  }
+  
+  font = al_load_ttf_font("disney.ttf",36,0 ); //creo el font con el tamano requerido.
+  
+  if (!font){
+      fprintf(stderr, "Could not load 'disney.ttf'.\n");
+      return -1;
+   }
+  al_draw_text(font, al_map_rgb(255,255,255), D_WIDTH/2, (D_HEIGHT/4),ALLEGRO_ALIGN_CENTER, "Trivial por combinatoria");
+  al_clear_to_color(al_map_rgb(255,255,255)); //Hace clear del backbuffer del diplay al color RGB 255,255,255 (blanco)
+  
+  al_flip_display(); //Flip del backbuffer, pasa a verse a la pantalla
+  
+  
+  
   puerto_A_Elegir = elegirPuerto();             //le pido al usuario que elija trabajar con puerto de 2 bytes o de 1 byte.
 
   if(puerto_A_Elegir == 2){
@@ -49,11 +82,12 @@ int main(void)
 
   char array [TAMANOPUERTO_16_T];                        //creo un arreglo que necesitara la funcion blinkAllOnLeds
   bienvenida();                                  //bienvenida al programa e instrucciones.
-
+  
   recibir(&aux1, &aux2, &input, &flagRecibi);
-
-  while(input != EXIT)          //salgo del while cuando el usuario lo indique y asi termina el programa
+  
+  while(input != EXIT )          //salgo del while cuando el usuario lo indique y asi termina el programa
   {
+    
     //imprimire el puerto que corresponda actualizando su estado cada vez qeu entre al while
     if(portSize == 1)
         byte_to_2(puertoA.port);
@@ -63,7 +97,7 @@ int main(void)
     }
     printf("\n");
     sleep(1);            //retardo entre estados.
-
+    
     if(error)               //si hubo error se solicita input obligatorio, bloqueante.
       while(!kbhit()){
         // mismo criterio que antes para discernir en cuanto al input
@@ -139,7 +173,12 @@ int main(void)
     }
 
   }
-
+  al_rest(5.0);
+ 
+  al_destroy_display(display); //IMPORTANTE: Destruir recursor empleados
+	
+  //al_init es "destruido automaticamente"
+  
   changemode(BUFFERED_ON);
   return 0;
 
