@@ -7,14 +7,14 @@
 FILE * handle;
 int nWritten;
 
-char *const pin27 = "/home/pi/sys/class/gpio/gpio27/value";
-char *const pin22 = "/home/pi/sys/class/gpio/gpio22/value";
-char *const pin25 = "/home/pi/sys/class/gpio/gpio25/value";
-char *const pin24 = "/home/pi/sys/class/gpio/gpio24/value";
-char *const pin23 = "/home/pi/sys/class/gpio/gpio23/value";
-char *const pin18 = "/home/pi/sys/class/gpio/gpio18/value";
-char *const pin4 =  "/home/pi/sys/class/gpio/gpio4/value";
-char *const pin17 = "/home/pi/sys/class/gpio/gpio17/value";
+char *const pin27 = "/sys/class/gpio/gpio27/value";
+char *const pin22 = "/sys/class/gpio/gpio22/value";
+char *const pin25 = "/sys/class/gpio/gpio25/value";
+char *const pin24 = "/sys/class/gpio/gpio24/value";
+char *const pin23 = "/sys/class/gpio/gpio23/value";
+char *const pin18 = "/sys/class/gpio/gpio18/value";
+char *const pin4 =  "/sys/class/gpio/gpio4/value";
+char *const pin17 = "/sys/class/gpio/gpio17/value";
 
 
 void setPin(unsigned int numPin, unsigned int value){
@@ -81,3 +81,50 @@ fclose(handle);
 // echo "1" | sudo tee /sys/class/gpio/gpio22/value 
 // echo "0" | sudo tee /sys/class/gpio/gpio22/value 
 
+FILE *handle_export;
+int nWritten_e;
+
+void set_Export(void)
+{
+    if ((handle_export =  fopen("/sys/class/gpio/export","w")) == NULL)
+    {	
+   	printf("Cannot open EXPORT File. Try again later.\n");
+   	exit(1);
+    }
+    nWritten_e =fputs("22",handle_export); 
+    if (nWritten_e ==-1)
+    {
+        printf ("Cannot EXPORT PIN . Try again later.\n");
+   	exit(1);
+    }	
+		
+   fclose(handle_export);  // Be carefull do this for EACH pin !!!
+
+}
+
+FILE * handle_direction;
+int nWritten_d;
+
+void set_Direction_out(void)
+{
+	
+	if ((handle_direction = fopen("/sys/class/gpio/gpio22/direction","w")) == NULL)
+	{
+		printf("Cannot open DIRECTION File");
+		exit(1);
+		}
+// Set pin Direction
+				
+	if ((nWritten_d=fputs("out",handle_direction))==-1)
+	{	
+		printf("Cannot open DIRECTION pin. Try again later.\n");
+		exit(1);
+	}
+	else
+	{	
+		printf("DIRECTION File for PIN opened succesfully\n");
+	}
+		
+fclose(handle_direction); // Be carefull do this for EACH pin !!!
+
+}

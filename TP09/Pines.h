@@ -15,6 +15,8 @@
 #define PINES_H
 
 void setPin(unsigned int numPin, unsigned int value);
+void set_Direction_out(void);
+void set_Export(void);
 
 
 #endif /* PINES_H */

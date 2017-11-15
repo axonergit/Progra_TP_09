@@ -24,6 +24,9 @@ int main(void)
   unsigned int portSize=0;
   puerto_8_t puertoA;
   puerto_16_t puertoD;
+  
+  set_Export();
+  set_Direction_out();
 
   puertoD.port = 0;           //inicializo el puerto, todos los leds apagados
   puertoA.port = 0;           //inicializo el puerto, todos los leds apagados
