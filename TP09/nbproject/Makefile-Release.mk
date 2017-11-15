@@ -35,10 +35,12 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Pines.o \
 	${OBJECTDIR}/display.o \
+	${OBJECTDIR}/elegirPuerto.o \
 	${OBJECTDIR}/led.o \
+	${OBJECTDIR}/logic.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/pines.o \
 	${OBJECTDIR}/registers.o \
 	${OBJECTDIR}/termlib.o
 
@@ -67,25 +69,35 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tp09: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/tp09 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/Pines.o: Pines.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Pines.o Pines.c
+
 ${OBJECTDIR}/display.o: display.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.c
+
+${OBJECTDIR}/elegirPuerto.o: elegirPuerto.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/elegirPuerto.o elegirPuerto.c
 
 ${OBJECTDIR}/led.o: led.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/led.o led.c
 
+${OBJECTDIR}/logic.o: logic.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/logic.o logic.c
+
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
-
-${OBJECTDIR}/pines.o: pines.c
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/pines.o pines.c
 
 ${OBJECTDIR}/registers.o: registers.c
 	${MKDIR} -p ${OBJECTDIR}

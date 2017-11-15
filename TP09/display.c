@@ -1,6 +1,6 @@
 #include "display.h"
 #include <stdio.h>
-
+#include "Pines.h"
 void bienvenida(void){
 
     imprimirString("\nBienvenido a la simulacion de puertos.");

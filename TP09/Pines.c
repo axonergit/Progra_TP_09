@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "Pines.h"
 
 FILE * handle;
 int nWritten;
