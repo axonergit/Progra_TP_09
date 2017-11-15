@@ -1,28 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "testBench.h"
 #include "display.h"
 #include "termlib.h"
 #include "registers.h"
 #include "deff.h"
+#include "logic.h"
 #include "led.h"
+#include "elegirPuerto.h"
 #include <unistd.h>
 
-#include <allegro5/allegro.h>
-#include <allegro5/allegro_font.h>
-#include <allegro5/display.h>
-#include <allegro5/allegro_ttf.h>
-
-
-int elegirPuerto(void);
-int is_Between_0_And_7 (unsigned char input);
-void recibir(char * aux1, char * aux2, char *input, int * flagRecibi);
 
 int main(void)
 {
-  
   changemode(BUFFERED_OFF); // Turns terminal line buffering off
   clrscr();
-  
   int error = 0, primeraVuelta =1;
   unsigned char input = 0;
   char aux1 = -1 ;
@@ -36,38 +28,6 @@ int main(void)
   puertoD.port = 0;           //inicializo el puerto, todos los leds apagados
   puertoA.port = 0;           //inicializo el puerto, todos los leds apagados
 
-  
-  ALLEGRO_DISPLAY * display = NULL;     //pointer to display.
-  ALLEGRO_FONT * font = NULL;           //pointer to font.
-  
-  if(!al_init()) { //Primera funcion a llamar antes de empezar a usar allegro.
-    fprintf(stderr, "failed to initialize allegro!\n");
-    return -1;
-  }
-  
-  al_init_font_addon(); // initialize the font addon
-  al_init_ttf_addon();// initialize the ttf (True Type Font) addon
-  
-  display = al_create_display(D_WIDTH, D_HEIGHT); // Intenta crear display de 640x480 de fallar devuelve NULL
-  
-  if(!display) {
-    fprintf(stderr, "failed to create display!\n");
-    return -1;
-  }
-  
-  font = al_load_ttf_font("disney.ttf",36,0 ); //creo el font con el tamano requerido.
-  
-  if (!font){
-      fprintf(stderr, "Could not load 'disney.ttf'.\n");
-      return -1;
-   }
-  al_draw_text(font, al_map_rgb(255,255,255), D_WIDTH/2, (D_HEIGHT/4),ALLEGRO_ALIGN_CENTER, "Trivial por combinatoria");
-  al_clear_to_color(al_map_rgb(255,255,255)); //Hace clear del backbuffer del diplay al color RGB 255,255,255 (blanco)
-  
-  al_flip_display(); //Flip del backbuffer, pasa a verse a la pantalla
-  
-  
-  
   puerto_A_Elegir = elegirPuerto();             //le pido al usuario que elija trabajar con puerto de 2 bytes o de 1 byte.
 
   if(puerto_A_Elegir == 2){
@@ -82,35 +42,60 @@ int main(void)
 
   char array [TAMANOPUERTO_16_T];                        //creo un arreglo que necesitara la funcion blinkAllOnLeds
   bienvenida();                                  //bienvenida al programa e instrucciones.
-  
-  recibir(&aux1, &aux2, &input, &flagRecibi);
-  
-  while(input != EXIT )          //salgo del while cuando el usuario lo indique y asi termina el programa
+
+      aux1 = getch();          // Get the Key       //recibo el primer input por usuario. Obligatorio asi qeu es bloqueante.
+
+      //chequeo si el usuario ingreso un numero valido o un caracter especial.
+      if (!is_Between_0_And_7(aux1))
+          input = aux1;             //caracter especial, direcatmente pasa a ser el input y tendra una accion inmediata.
+      else{
+          aux2 = (aux2*10) + aux1-'0';  //numero, convierto e indico que recibi un numero, no tendra accionar el numero hasta recibir un enter.
+          flagRecibi = 1;
+      }
+      aux1 = -1;                //reseteo la variable auxiliar para recibir input.
+
+
+
+  while(input != EXIT)          //salgo del while cuando el usuario lo indique y asi termina el programa
   {
-    
     //imprimire el puerto que corresponda actualizando su estado cada vez qeu entre al while
     if(portSize == 1)
         byte_to_2(puertoA.port);
     else if (portSize == 2){
+        
         byte_to_2(puertoD.puertos.puertoA.port);
         byte_to_2(puertoD.puertos.puertoB.port);
     }
     printf("\n");
     sleep(1);            //retardo entre estados.
-    
+
     if(error)               //si hubo error se solicita input obligatorio, bloqueante.
       while(!kbhit()){
         // mismo criterio que antes para discernir en cuanto al input
-        recibir(&aux1, &aux2, &input, &flagRecibi);
+        aux1 = getch();
+        if (!is_Between_0_And_7(aux1))
+            input = aux1;
 
+        else{
+            aux2 = (aux2*10) + aux1-'0';
+            flagRecibi = 1;
+        }
+        aux1 = -1;
         error = 0;
         break;
       }
     // chequeo cada vez que corra el while si el usuario presiono el keyboard y acciono en caso que lo haya hecho.
     //esto permite no interrumpir el programa y que el estado de los leds se siga actualizando
-    if(kbhit())              // check if a key was pressed
-      recibir(&aux1, &aux2, &input, &flagRecibi);
-    
+    if(kbhit()){              // check if a key was pressed
+      aux1 = getch();          // Get the Key
+      if (!is_Between_0_And_7(aux1))
+            input = aux1;
+      else{
+          aux2 = (aux2*10) + aux1-'0';
+          flagRecibi = 1;
+      }
+      aux1 = -1;
+    }
 
     else{
       switch (input)
@@ -173,61 +158,8 @@ int main(void)
     }
 
   }
-  al_rest(5.0);
- 
-  al_destroy_display(display); //IMPORTANTE: Destruir recursor empleados
-	
-  //al_init es "destruido automaticamente"
-  
+
   changemode(BUFFERED_ON);
   return 0;
 
-}
-
-int elegirPuerto(void){
-    unsigned int opcionElegida = 0;
-    unsigned int flagError = 0;
-    do{                 //Pido al usuario que elija tamaño de puerto que desee simular
-        imprimirString("La siguiente simulacion puede realizarse en un puerto");
-        imprimirString("de 8-bits o 16-bits.");
-        imprimirString("Por favor elija el puerto deseado presionando un '1' para 8-bits");
-        imprimirString("o un '2' para 16-bits:\n");
-        while(!kbhit()){
-            opcionElegida = getch();       //Pido si o si un input, por eso uso getchar, para esperar al enter.
-            break;
-        }
-
-        if((opcionElegida != '1') && (opcionElegida != '2')){     //Chequeo si se uso un input valido
-            flagError = 1;          //Prendo mi flag de error
-            imprimirString("No se ha ingresado un valor correcto.");   //Pido que se ingrese un input valido
-            imprimirString("Vuelva a ingresar un valor, pero esta vez correcto.");
-        }
-        else
-            flagError = 0;        //Reseteo el flag de error
-    }
-    while(flagError);       //Pido al usuario input hasta que elija una opcion valida
-    return (opcionElegida -'0');
-}
-
-int is_Between_0_And_7 (unsigned char input){
-
-	int flagNotError;
-	if( (input >= '0') && (input <= '7') )				//Chequeo si se ha ingresado un numero entre 0 y 7
-		flagNotError = 1;								//Dee ser asi prendo mi flag de no error
-	else
-		flagNotError = 0;							//Sino hubo error
-
-	return flagNotError;					//Devuelvo si hay error
-}
-
-void recibir(char * aux1, char * aux2, char *input, int * flagRecibi){
-    *aux1 = getch();         
-        if (!is_Between_0_And_7(*aux1))
-            *input = *aux1;
-        
-        else{
-            *aux2 = (*aux2)*10 + (*aux1)-'0';
-            *flagRecibi = 1;
-        }
-        *aux1 = -1;
 }

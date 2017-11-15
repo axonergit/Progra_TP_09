@@ -9,7 +9,6 @@
       <itemPath>elegirPuerto.h</itemPath>
       <itemPath>led.h</itemPath>
       <itemPath>logic.h</itemPath>
-      <itemPath>pines.h</itemPath>
       <itemPath>registers.h</itemPath>
       <itemPath>termlib.h</itemPath>
       <itemPath>testBench.h</itemPath>
@@ -21,10 +20,12 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Pines.c</itemPath>
       <itemPath>display.c</itemPath>
+      <itemPath>elegirPuerto.c</itemPath>
       <itemPath>led.c</itemPath>
+      <itemPath>logic.c</itemPath>
       <itemPath>main.c</itemPath>
-      <itemPath>pines.c</itemPath>
       <itemPath>registers.c</itemPath>
       <itemPath>termlib.c</itemPath>
     </logicalFolder>
@@ -61,25 +62,10 @@
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
-        <linkerTool>
-          <linkerLibItems>
-            <linkerOptionItem>`pkg-config --libs adwaita-icon-theme`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_acodec-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_audio-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_color-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_dialog-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_font-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_image-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_main-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_memfile-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_physfs-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_primitives-5.0`</linkerOptionItem>
-            <linkerOptionItem>`pkg-config --libs allegro_ttf-5.0`</linkerOptionItem>
-          </linkerLibItems>
-        </linkerTool>
       </compileType>
       <item path="Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Pines.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="deff.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -87,19 +73,19 @@
       </item>
       <item path="display.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="elegirPuerto.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="elegirPuerto.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="led.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="led.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="logic.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="logic.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="pines.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="pines.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="registers.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -134,11 +120,15 @@
       </compileType>
       <item path="Makefile" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="Pines.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="deff.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="display.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="display.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="elegirPuerto.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="elegirPuerto.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -146,13 +136,11 @@
       </item>
       <item path="led.h" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="logic.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="logic.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="pines.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="pines.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="registers.c" ex="false" tool="0" flavor2="0">
       </item>
