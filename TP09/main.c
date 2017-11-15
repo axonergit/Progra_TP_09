@@ -9,7 +9,7 @@
 #include "led.h"
 #include "elegirPuerto.h"
 #include <unistd.h>
-
+#include "Pines.h"
 
 int main(void)
 {
