@@ -1,6 +1,6 @@
 #include "display.h"
 #include <stdio.h>
-
+#include "pines.h"
 
 
 
@@ -33,4 +33,14 @@ void byte_to_2(char  byte){
   printf("%c",(byte & 0x04) ? '1' : '0');
   printf("%c",(byte & 0x02) ? '1' : '0');
   printf("%c",(byte & 0x01) ? '1' : '0');
+  
+  setPin( 0 ,((byte & 0x80) ? 1 : 0));
+  setPin( 1 ,((byte & 0x80) ? 1 : 0));
+  setPin( 2 ,((byte & 0x80) ? 1 : 0));
+  setPin( 3 ,((byte & 0x80) ? 1 : 0));
+  setPin( 4 ,((byte & 0x80) ? 1 : 0));
+  setPin( 5 ,((byte & 0x80) ? 1 : 0));
+  setPin( 6 ,((byte & 0x80) ? 1 : 0));
+  setPin( 7 ,((byte & 0x80) ? 1 : 0));
 }
+

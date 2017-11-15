@@ -9,6 +9,7 @@
       <itemPath>elegirPuerto.h</itemPath>
       <itemPath>led.h</itemPath>
       <itemPath>logic.h</itemPath>
+      <itemPath>pines.h</itemPath>
       <itemPath>registers.h</itemPath>
       <itemPath>termlib.h</itemPath>
       <itemPath>testBench.h</itemPath>
@@ -23,6 +24,7 @@
       <itemPath>display.c</itemPath>
       <itemPath>led.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>pines.c</itemPath>
       <itemPath>registers.c</itemPath>
       <itemPath>termlib.c</itemPath>
     </logicalFolder>
@@ -95,6 +97,10 @@
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
+      <item path="pines.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="pines.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="registers.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="registers.h" ex="false" tool="3" flavor2="0">
@@ -143,6 +149,10 @@
       <item path="logic.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="pines.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="pines.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="registers.c" ex="false" tool="0" flavor2="0">
       </item>
