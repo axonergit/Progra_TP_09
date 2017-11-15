@@ -37,7 +37,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/Pines.o \
 	${OBJECTDIR}/display.o \
-	${OBJECTDIR}/elegirPuerto.o \
 	${OBJECTDIR}/led.o \
 	${OBJECTDIR}/logic.o \
 	${OBJECTDIR}/main.o \
@@ -78,11 +77,6 @@ ${OBJECTDIR}/display.o: display.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/display.o display.c
-
-${OBJECTDIR}/elegirPuerto.o: elegirPuerto.c
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/elegirPuerto.o elegirPuerto.c
 
 ${OBJECTDIR}/led.o: led.c
 	${MKDIR} -p ${OBJECTDIR}

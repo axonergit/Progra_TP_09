@@ -23,7 +23,6 @@
                    projectFiles="true">
       <itemPath>Pines.c</itemPath>
       <itemPath>display.c</itemPath>
-      <itemPath>elegirPuerto.c</itemPath>
       <itemPath>led.c</itemPath>
       <itemPath>logic.c</itemPath>
       <itemPath>main.c</itemPath>
@@ -75,8 +74,6 @@
       <item path="display.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="display.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="elegirPuerto.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="elegirPuerto.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -132,8 +129,6 @@
       <item path="display.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="display.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="elegirPuerto.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="elegirPuerto.h" ex="false" tool="3" flavor2="0">
       </item>
