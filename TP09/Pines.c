@@ -7,14 +7,14 @@
 FILE * handle;
 int nWritten;
 
-char *const pin27 = "/sys/class/gpio/gpio27/value";
-char *const pin22 = "/sys/class/gpio/gpio22/value";
-char *const pin25 = "/sys/class/gpio/gpio25/value";
-char *const pin24 = "/sys/class/gpio/gpio24/value";
-char *const pin23 = "/sys/class/gpio/gpio23/value";
-char *const pin18 = "/sys/class/gpio/gpio18/value";
-char *const pin4 =  "/sys/class/gpio/gpio4/value";
-char *const pin17 = "/sys/class/gpio/gpio17/value";
+char *const pin27 = "/home/pi/sys/class/gpio/gpio27/value";
+char *const pin22 = "/home/pi/sys/class/gpio/gpio22/value";
+char *const pin25 = "/home/pi/sys/class/gpio/gpio25/value";
+char *const pin24 = "/home/pi/sys/class/gpio/gpio24/value";
+char *const pin23 = "/home/pi/sys/class/gpio/gpio23/value";
+char *const pin18 = "/home/pi/sys/class/gpio/gpio18/value";
+char *const pin4 =  "/home/pi/sys/class/gpio/gpio4/value";
+char *const pin17 = "/home/pi/sys/class/gpio/gpio17/value";
 
 
 void setPin(unsigned int numPin, unsigned int value){
