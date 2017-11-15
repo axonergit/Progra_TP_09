@@ -14,16 +14,8 @@
 #ifndef PINES_H
 #define PINES_H
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+void setPin(unsigned int numPin, unsigned int value);
 
-
-
-
-#ifdef __cplusplus
-}
-#endif
 
 #endif /* PINES_H */
 
